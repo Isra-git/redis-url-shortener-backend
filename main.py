@@ -23,7 +23,7 @@ app = FastAPI()
 Configuramos CORS 
 """
 origins = [
-    "http://localhost:5173" # Puerto por defecto vite
+    "http://localhost:5173", # Puerto por defecto vite
     "*" # permite que se conecten desde
 ]
 
@@ -61,12 +61,17 @@ def generar_codigo(length=5):
     caracteres= string.ascii_letters + string.digits
     return ''.join(random.choice(caracteres) for _ in range (length))
 
+
+
+
 # ----- Empezamos los Endpoints---------
 
 # Endpoint principal
 @app.get("/")
 def read_root():
     return {"mensaje" : "API funcionando"}
+
+
 
 @app.post("/shorten")
 def shorten_url(item: URLInput):
